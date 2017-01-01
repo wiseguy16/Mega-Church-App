@@ -58,6 +58,9 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
     override func viewDidLoad() {
         super.viewDidLoad()
          todayCheck = NSDate()
+        
+        makeDateLabel()
+
         //TODO: Fix Live Service Label. one more try again
        // let featuredRealm = Realm.sharedInstance
         
@@ -275,21 +278,21 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
             case 7:
                 if case 1645...1830 = checkTime
                 {
-                    makeDateLabel()
+                    updateLiveServiceBar()
                 }
             case 1:
                 if case 845...1230 = checkTime
                 {
-                    makeDateLabel()
+                    updateLiveServiceBar()
                 }
                 else if case 1645...1830 = checkTime
                 {
-                    makeDateLabel()
+                    updateLiveServiceBar()
                 }
             case 2:
                 if case 1845...2030 = checkTime
                 {
-                    makeDateLabel()
+                    updateLiveServiceBar()
                 }
             default:
                 //self.dateBar = UILabel()
@@ -605,8 +608,8 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
         //dateBar!.backgroundColor = UIColor(red: 208/255.0, green: 198/255.0, blue: 181/255.0, alpha: 1)
         dateBar.numberOfLines = 2
         dateBar.textAlignment = .Center
-        dateBar.alpha = 0.9
-        dateBar.userInteractionEnabled = true
+        dateBar.alpha = 0.0
+        dateBar.userInteractionEnabled = false
         dateBar.addGestureRecognizer(touchHere)
         //dateBar!.
         
@@ -615,6 +618,13 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
         
         dateBar.text = "LIVE SERVICE IN PROGRESS. \nCLICK TO WATCH NOW."
         view.addSubview(dateBar)
+        
+    }
+    
+    func updateLiveServiceBar()
+    {
+        dateBar.alpha = 0.9
+        dateBar.userInteractionEnabled = true
         
     }
     

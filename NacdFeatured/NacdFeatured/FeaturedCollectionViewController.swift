@@ -280,27 +280,37 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
                 {
                     updateLiveServiceBar()
                 }
+                else
+                {
+                    disableLiveServiceBar()
+                }
             case 1:
                 if case 845...1230 = checkTime
                 {
                     updateLiveServiceBar()
+                    print("live service")
                 }
                 else if case 1645...1830 = checkTime
                 {
                     updateLiveServiceBar()
+                }
+                else
+                {
+                   disableLiveServiceBar()
                 }
             case 2:
                 if case 1845...2030 = checkTime
                 {
                     updateLiveServiceBar()
                 }
+                else
+                {
+                    disableLiveServiceBar()
+                }
             default:
                 //self.dateBar = UILabel()
-                    dateBar.alpha = 0
-                
-                
+                    disableLiveServiceBar()
                 print("not live")
-            
         }
     }
 
@@ -625,6 +635,14 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
     {
         dateBar.alpha = 0.9
         dateBar.userInteractionEnabled = true
+        
+    }
+    
+    func disableLiveServiceBar()
+    {
+        dateBar.alpha = 0.0
+        dateBar.userInteractionEnabled = false
+
         
     }
     

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offWhite" translatesAutoresizingMaskIntoConstraints="NO" id="NhI-OR-E04">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SmallLogo" translatesAutoresizingMaskIntoConstraints="NO" id="SAn-mg-RoT">
+                                <rect key="frame" x="40" y="245" width="520" height="112"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SAn-mg-RoT" secondAttribute="height" multiplier="185:293" id="8vc-ab-aaD"/>
+                                    <constraint firstAttribute="height" constant="200" id="k6G-tW-NJN"/>
+                                    <constraint firstAttribute="width" secondItem="SAn-mg-RoT" secondAttribute="height" multiplier="1:1" id="wIW-3P-ta7"/>
+                                    <constraint firstAttribute="width" constant="200" id="yMe-4N-6r8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8vc-ab-aaD"/>
+                                        <exclude reference="k6G-tW-NJN"/>
+                                        <exclude reference="wIW-3P-ta7"/>
+                                        <exclude reference="yMe-4N-6r8"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NhI-OR-E04" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="4DH-Xt-EQX"/>
+                            <constraint firstItem="NhI-OR-E04" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="7zB-bi-7Oa"/>
+                            <constraint firstItem="SAn-mg-RoT" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="XYX-5Y-LXN"/>
+                            <constraint firstItem="NhI-OR-E04" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YbD-4J-loY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SAn-mg-RoT" secondAttribute="trailing" constant="20" id="Zj6-f8-acH"/>
+                            <constraint firstItem="SAn-mg-RoT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ada-Hg-TIN"/>
+                            <constraint firstItem="SAn-mg-RoT" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="adi-97-R4X"/>
+                            <constraint firstItem="SAn-mg-RoT" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="b58-cy-SXX"/>
+                            <constraint firstAttribute="bottom" secondItem="NhI-OR-E04" secondAttribute="bottom" id="c9i-sc-auU"/>
+                            <constraint firstAttribute="trailing" secondItem="NhI-OR-E04" secondAttribute="trailing" id="h8t-wj-cAC"/>
+                            <constraint firstItem="SAn-mg-RoT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oB3-fk-rxE"/>
+                            <constraint firstItem="NhI-OR-E04" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sLv-bJ-dw3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XYX-5Y-LXN"/>
+                                <exclude reference="adi-97-R4X"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SmallLogo" width="327" height="112"/>
+        <image name="offWhite" width="475" height="784"/>
+    </resources>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_NacdFeatured {
+  umbrella header "Pods-NacdFeatured-umbrella.h"
+
+  export *
+  module * { export * }
+}

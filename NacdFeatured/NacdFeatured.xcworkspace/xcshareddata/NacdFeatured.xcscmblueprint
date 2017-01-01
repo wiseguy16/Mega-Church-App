@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "91FE04FACA7A0E4BAF9B7F738780568473F0E131",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DF5019FD42C1D088D3D3759DC86820D8FE6EBCF3" : 0,
+    "91FE04FACA7A0E4BAF9B7F738780568473F0E131" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4181B85E-A3A2-4D30-8CB6-93AD8AC66403",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DF5019FD42C1D088D3D3759DC86820D8FE6EBCF3" : "",
+    "91FE04FACA7A0E4BAF9B7F738780568473F0E131" : "NacdFeatured\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NacdFeatured",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NacdFeatured.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wiseguy16\/NewNorthlandNews-Dec-1st.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91FE04FACA7A0E4BAF9B7F738780568473F0E131"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wiseguy16\/NorthlandNewsApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF5019FD42C1D088D3D3759DC86820D8FE6EBCF3"
+    }
+  ]
+}

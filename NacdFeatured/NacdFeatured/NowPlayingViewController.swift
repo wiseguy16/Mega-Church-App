@@ -74,7 +74,7 @@ class NowPlayingViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        theTime = CMTime(seconds: 0, preferredTimescale: 1)
+//        theTime = CMTime(seconds: 0, preferredTimescale: 1)
         
         let config = Realm.Configuration()
         Realm.Configuration.defaultConfiguration = config
@@ -144,10 +144,14 @@ class NowPlayingViewController: UIViewController
     {
       //  print(skipSetup)
         super.viewWillAppear(animated)
-        if skipSetup != true
-        {
+//        if skipSetup != true
+//        {
         prepForPlaying()
-        }
+//        }
+//        if skipSetup == true
+//        {
+//            player.seekToTime(theTime!)
+//        }
         dwnldSermonRlm = audioRealm.objects(SermonAudioRlm.self).filter("isNowPlaying == true")
         
         for aPod in dwnldSermonRlm
@@ -340,10 +344,12 @@ class NowPlayingViewController: UIViewController
     
     // MARK: - Timer update status of player
     func startTimer() {
+
         playingTimer.invalidate() // just in case this button is tapped multiple times
         
         // start the timer
         playingTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+       
     }
     
     // stop timer
@@ -351,33 +357,49 @@ class NowPlayingViewController: UIViewController
         playingTimer.invalidate()
     }
     
-    func timerAction() {
-        endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
-        startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
-        let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
-        
-        playSlider.setValue(rate, animated: false)
-        theTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1)
-        print(theTime)
-        
-        // Call delegate
-        if (CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()) < 1.0)
+    func timerAction()
+    {
+        if skipSetup != true
         {
-            cancelTimer()
+            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
+            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
+            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
             
-            player.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
-            startTimer()
+            playSlider.setValue(rate, animated: false)
+            theTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1)
+            print(theTime)
             
-            player.pause()
-            playPauseButton.setImage(playImage, forState: .Normal)
-            print("playerDidFinishPlaying")
-            aSermon.isNowPlaying = !aSermon.isNowPlaying
-           // self.delegate.playerDidFinishPlaying(self)
+            // Call delegate
+            if (CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()) < 1.0)
+            {
+                cancelTimer()
+                
+                player.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
+                startTimer()
+                
+                player.pause()
+                playPauseButton.setImage(playImage, forState: .Normal)
+                print("playerDidFinishPlaying")
+                aSermon.isNowPlaying = !aSermon.isNowPlaying
+               // self.delegate.playerDidFinishPlaying(self)
+            }
+        }
+        else
+        {
+            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
+            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
+            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
+            
+            playSlider.setValue(rate, animated: false)
+            player.seekToTime(theTime!)
+            
         }
         
 //        if self.delegate != nil {
 //            self.delegate.playerDidUpdateCurrentTimePlaying(self, currentTime: (self.audioPlayer.currentItem?.currentTime())!)
 //        }
+        
+        
     }
     
 //MARK: Progress UI Updates - timers and functions
@@ -534,8 +556,6 @@ class NowPlayingViewController: UIViewController
 //                
 //                else
 //                {
-                
-                
                     player.play()
               // if player.status == ???
                     startTimer()
@@ -574,11 +594,8 @@ class NowPlayingViewController: UIViewController
         // player.volume = 1
         
         player.rate = 1.0
-            
-        
             if aSermon.isNowPlaying
             {
-                
                 if sermonID == 56  //dwnldSermonRlm[0].id
                 {
                     print(sermonID)
@@ -586,7 +603,6 @@ class NowPlayingViewController: UIViewController
                     player.seekToTime(theTime!)
                     startTimer()
                 }
-                
                 else
                 {
                     player.play()

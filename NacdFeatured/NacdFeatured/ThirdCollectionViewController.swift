@@ -390,6 +390,8 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
            if let aSermon = Video.makeAudioFromRlmObjct(playingSermon)
            {
              detailVC.aSermon = aSermon
+             detailVC.skipSetup = true
+            
            }
         }
         

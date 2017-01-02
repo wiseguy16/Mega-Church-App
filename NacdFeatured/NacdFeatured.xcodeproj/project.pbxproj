@@ -148,6 +148,7 @@
 		4A06D1711E00986F0044681E /* SermonAudioRlm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06D1701E00986F0044681E /* SermonAudioRlm.swift */; };
 		4A06D1731E0460730044681E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06D1721E0460730044681E /* Reachability.swift */; };
 		4A06D1751E0486B80044681E /* WelcomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06D1741E0486B80044681E /* WelcomeCollectionViewCell.swift */; };
+		4A0A0AA71E19D0F8001E3D41 /* LaunchNewScreenSmaller.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A0AA61E19D0F8001E3D41 /* LaunchNewScreenSmaller.png */; };
 		4A215D1B1E0ADC1600E47F47 /* NewspaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A215D1A1E0ADC1600E47F47 /* NewspaperViewController.swift */; };
 		4A215D1D1E0AEAE800E47F47 /* uxpin-icon-set_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A215D1C1E0AEAE800E47F47 /* uxpin-icon-set_window.png */; };
 		4A215D1F1E0C4AA800E47F47 /* BlogRlm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A215D1E1E0C4AA700E47F47 /* BlogRlm.swift */; };
@@ -356,6 +357,7 @@
 		4A06D1701E00986F0044681E /* SermonAudioRlm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SermonAudioRlm.swift; sourceTree = "<group>"; };
 		4A06D1721E0460730044681E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4A06D1741E0486B80044681E /* WelcomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A0A0AA61E19D0F8001E3D41 /* LaunchNewScreenSmaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchNewScreenSmaller.png; sourceTree = "<group>"; };
 		4A215D1A1E0ADC1600E47F47 /* NewspaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperViewController.swift; sourceTree = "<group>"; };
 		4A215D1C1E0AEAE800E47F47 /* uxpin-icon-set_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uxpin-icon-set_window.png"; sourceTree = "<group>"; };
 		4A215D1E1E0C4AA700E47F47 /* BlogRlm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogRlm.swift; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 				DD3717C81DD0FCE50052AFF7 /* Download From Cloud-50.png */,
 				DD20BB661DE342BF000E989C /* N_Icon.png */,
 				DD3717CC1DD103FA0052AFF7 /* loading.png */,
+				4A0A0AA61E19D0F8001E3D41 /* LaunchNewScreenSmaller.png */,
 				DD3717CE1DD104020052AFF7 /* loading@2x.png */,
 				DD20BB581DDE64A9000E989C /* pause-button-new.png */,
 				DD3717BE1DD0F8550052AFF7 /* btn-play.png */,
@@ -970,6 +973,7 @@
 				4A035F2D1DCB8E1F00B271B0 /* podcast5.mp3 in Resources */,
 				4A035F031DCB8DE600B271B0 /* caveHoleOrangeLight.jpg in Resources */,
 				4A035F481DCB8E8C00B271B0 /* Roboto-BlackItalic.ttf in Resources */,
+				4A0A0AA71E19D0F8001E3D41 /* LaunchNewScreenSmaller.png in Resources */,
 				4A035F551DCB8E8C00B271B0 /* RobotoCondensed-Italic.ttf in Resources */,
 				4A035F351DCB8E8C00B271B0 /* FormaDJRText-Italic.ttf in Resources */,
 				4A035E581DCB8C6200B271B0 /* nacdBlog3.json in Resources */,

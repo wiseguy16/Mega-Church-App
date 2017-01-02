@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -184,8 +184,8 @@
                                             <rect key="frame" x="100" y="39" width="80" height="80"/>
                                             <state key="normal" image="btn-play.png"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBn-CB-fMn">
-                                            <rect key="frame" x="20" y="250" width="148" height="27"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBn-CB-fMn">
+                                            <rect key="frame" x="20" y="250" width="148" height="24"/>
                                             <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="12"/>
                                             <state key="normal" title="tabLabel">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -214,7 +214,7 @@
                                     <constraint firstItem="i3p-NG-Xb3" firstAttribute="centerY" secondItem="F3C-XF-a5g" secondAttribute="centerY" id="VBI-QK-w5e"/>
                                     <constraint firstAttribute="bottom" secondItem="frV-Ew-0Fv" secondAttribute="bottom" constant="24" id="Wu0-xs-pa4"/>
                                     <constraint firstAttribute="bottom" secondItem="YO5-GS-bec" secondAttribute="bottom" constant="2" id="ZDv-dQ-Seo"/>
-                                    <constraint firstAttribute="bottom" secondItem="LBn-CB-fMn" secondAttribute="bottom" constant="2" id="chH-aD-kYL"/>
+                                    <constraint firstAttribute="bottom" secondItem="LBn-CB-fMn" secondAttribute="bottom" constant="6" id="chH-aD-kYL"/>
                                     <constraint firstItem="uk8-g7-uu1" firstAttribute="centerY" secondItem="frV-Ew-0Fv" secondAttribute="centerY" constant="6" id="dGp-sH-ZVi"/>
                                     <constraint firstItem="YO5-GS-bec" firstAttribute="centerX" secondItem="XVf-dx-kLB" secondAttribute="centerX" id="e2v-rm-LWE"/>
                                     <constraint firstItem="e2c-Eu-AOG" firstAttribute="centerY" secondItem="frV-Ew-0Fv" secondAttribute="centerY" id="eDN-BP-BLY"/>
@@ -235,7 +235,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="WelcomeCell" id="sO8-H8-Cg5" customClass="WelcomeCollectionViewCell" customModule="NacdFeatured" customModuleProvider="target">
-                                <rect key="frame" x="125" y="374" width="351" height="292"/>
+                                <rect key="frame" x="124.5" y="374" width="351" height="292"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="351" height="292"/>
@@ -861,11 +861,11 @@ to obey your commands.
                                 <rect key="frame" x="0.0" y="28" width="412" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Gz-1N-jBr" id="tnh-tG-qzs">
-                                    <rect key="frame" x="0.0" y="0.0" width="412" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="412" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xLp-xH-XNf">
-                                            <rect key="frame" x="15" y="0.0" width="382" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="382" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1011,7 +1011,7 @@ to obey your commands.
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nlM-x7-f2B">
-                            <rect key="frame" x="86" y="7" width="429" height="30"/>
+                            <rect key="frame" x="85.5" y="7" width="429" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="FormaDJRText-Bold" family="Forma DJR Text" pointSize="18"/>
                             <state key="normal" title="Recent Services▼">
@@ -1730,7 +1730,7 @@ to obey your commands.
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sermons" id="F60-Ao-QYe">
-                        <barButtonItem key="leftBarButtonItem" title="FIX THIS!" id="dps-NM-0Ka">
+                        <barButtonItem key="leftBarButtonItem" title="Now Playing" id="dps-NM-0Ka">
                             <connections>
                                 <action selector="nowPlayingTapped:" destination="WY9-CF-9vw" id="y4L-Mu-UOI"/>
                             </connections>
@@ -2324,7 +2324,7 @@ to obey your commands.
                                 <rect key="frame" x="0.0" y="94" width="600" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9u5-Pp-D9m" id="XSS-9s-Ygm">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="123"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7M3-EU-kCC">
@@ -2339,7 +2339,7 @@ to obey your commands.
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Series - Stuck trying to dowload" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-37-rpW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Series - Stuck trying to dowload" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-37-rpW">
                                             <rect key="frame" x="172" y="89" width="422" height="15"/>
                                             <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2378,7 +2378,7 @@ to obey your commands.
                                 <rect key="frame" x="0.0" y="218" width="600" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w8f-JJ-tc6" id="lSF-c9-Gxl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="123"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eT-Qg-9bF">
@@ -2434,7 +2434,7 @@ to obey your commands.
                                 <rect key="frame" x="0.0" y="342" width="600" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4y3-Rg-E06" id="kmc-Gh-LNu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="110.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-E4-sHq">
@@ -2925,6 +2925,6 @@ to obey your commands.
         <image name="videoIconUnhighlighted.png" width="32" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ndF-Qd-QFW"/>
+        <segue reference="NYn-uQ-vwO"/>
     </inferredMetricsTieBreakers>
 </document>

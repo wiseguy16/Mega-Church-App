@@ -17,7 +17,7 @@ Dependencies used: Realm for CoreData and SDWebImage for Async Image Loading.
 ![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/PlumInAction1.png)
 
 ![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/MoreSectionTab.png)
-![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/BlogList.png)
+![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/BlogListTab.png)
 ![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/BlogDetailTab.png)
 ![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/AudioTab.png)
 ![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/LitTab.png)

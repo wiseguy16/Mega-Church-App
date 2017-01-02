@@ -392,6 +392,16 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
              detailVC.aSermon = aSermon
              detailVC.skipSetup = true
             
+            let player3 = AudioManager.sharedInstance
+           // player3.playAudio("audioname", fileType: "mp3")
+            
+            // USE THE SINGLETON IMPLEMENTATION HERE!!
+            if player3.isCurrentlyPlaying == true
+            {
+                print("don't play a new file")
+            }
+        
+            
            }
         }
         

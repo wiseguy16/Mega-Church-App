@@ -110,6 +110,9 @@ class NowPlayingViewController: UIViewController
         }
        // let songNames = ["music"]
         
+        let player2 = AudioManager.sharedInstance
+        player2.playAudio("audioname", fileType: "mp3")
+        
 
         //let songs = songNames.map { AVPlayerItem(URL: NSBundle.mainBundle().URLForResource($0, withExtension: "mp3")!) }
         let song = AVPlayerItem(URL: NSURL(string: "https://s3.amazonaws.com/nacdvideo/\(aSermon.tagForAudioRef!).mp3")! )

@@ -96,7 +96,6 @@ class NowPlayingViewController: UIViewController
         if aSermon == nil
         {
             skipSetup = true
-            //let theCount = audSermonRlm.count - 1
             aSermon = Video.makeAudioFromRlmObjct(dwnldSermonRlm.last!)
         }
     
@@ -108,28 +107,17 @@ class NowPlayingViewController: UIViewController
         } catch {
             print("Better Handle this Error!")
         }
-       // let songNames = ["music"]
         
-        let player2 = AudioManager.sharedInstance
-        player2.playAudio("audioname", fileType: "mp3")
+//        let player2 = AudioManager.sharedInstance
+//        player2.playAudio("audioname", fileType: "mp3")
         
-
-        //let songs = songNames.map { AVPlayerItem(URL: NSBundle.mainBundle().URLForResource($0, withExtension: "mp3")!) }
         let song = AVPlayerItem(URL: NSURL(string: "https://s3.amazonaws.com/nacdvideo/\(aSermon.tagForAudioRef!).mp3")! )
         //player = AVQueuePlayer(items: songs)
         
 
         player = AVPlayer(playerItem: song)
         
-//        if player.currentItem != nil
-//        {
-//            nowPlayItem = player.currentItem
-//            
-//        }
-//        if song == nowPlayItem
-//        {
-//            skipSetup = true
-//        }
+
         
         
         
@@ -479,28 +467,6 @@ class NowPlayingViewController: UIViewController
         titleLabel.text = aSermon.name
         seriesLabel.text = aSermon.descript
         
-//        if checkArrayAudioRlm.contains(aSermon.convertToURINumber(aSermon.uri!))
-//        {
-//          downloadCloudButton.setImage(pauseImage, forState: .Normal)
-//        }
-        
-//        let attributedBody  = NSMutableAttributedString(string: aSermon.descript!)
-//        
-//        // *** Create instance of `NSMutableParagraphStyle`
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        
-//        // *** set LineSpacing property in points ***
-//        paragraphStyle.lineSpacing = 4 // Whatever line spacing you want in points
-//        
-//        // *** Apply attribute to string ***
-//        attributedBody.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attributedBody.length))
-//        
-//        // *** Set Attributed String to your label ***
-//        
-//        
-//        fullDescriptionLabel.attributedText = attributedBody
-        
-        
         let myURL = aSermon.imageURLString!
         let placeHolder = UIImage(named: "WhiteBack.png")
         let realURL = NSURL(string: myURL)
@@ -509,12 +475,6 @@ class NowPlayingViewController: UIViewController
     
     func prepForPlaying()
     {
-//        var now = player.currentTime()
-//        if now == theTime!
-//        {
-//           print("Wow maybe this is nothing")
-//        }
-        
         
         let sermonID = aSermon.convertToURINumber(aSermon.uri!)
 
@@ -532,14 +492,10 @@ class NowPlayingViewController: UIViewController
             // to check if it exists before downloading it
             if NSFileManager().fileExistsAtPath(destinationUrl.path!) {
                 print("The file already exists at path")
-                
                 let audioFilePath =  destinationUrl.path!
-                
                 let audioFileUrl = NSURL.fileURLWithPath(audioFilePath) //   .fileURL(withPath: audioFilePath!)
                 let myAsset = AVAsset(URL: audioFileUrl)
                 let playerItem1 = AVPlayerItem(asset: myAsset)
-               // player = AVPlayer(playerItem: playerItem1)
-                
                 
                 player.replaceCurrentItemWithPlayerItem(playerItem1)
             }
@@ -548,42 +504,16 @@ class NowPlayingViewController: UIViewController
             
             if aSermon.isNowPlaying
             {
-                
-//                if sermonID ==  56  //dwnldSermonRlm[0].id
-//                {
-//                    print(sermonID)
-//                    print(dwnldSermonRlm[0].id)
-//                    player.seekToTime(theTime!)
-//                    startTimer()
-//                }
-//                
-//                else
-//                {
-                    player.play()
-              // if player.status == ???
-                    startTimer()
-               // }
-                
+                player.play()
+                startTimer()
+                playPauseButton.setImage(pauseImage, forState: .Normal)
+
             }
             else if !aSermon.isNowPlaying
             {
                 player.pause()
-            }
-            
-            if aSermon.isNowPlaying
-            {
-                // streamPlayer.play()
-                //self.audioPlayer.play()
-                playPauseButton.setImage(pauseImage, forState: .Normal)
-            }
-            else
-            {
-                //streamPlayer.pause()
-                //self.audioPlayer.stop()
                 playPauseButton.setImage(playImage, forState: .Normal)
             }
-       // }
-        
         }
         
         else
@@ -632,24 +562,9 @@ class NowPlayingViewController: UIViewController
             
         }
         convertAudioAndUpdateToSharedRealmObjcts(aSermon)
-//        let audSermonRlm = audioRealm.objects(SermonAudioRlm.self).filter("isNowPlaying == true")
-//        // audioRlmItems = audSermonRlm.sorted("tagForAudioRef", ascending: false)
-//        audioRlmItems = audSermonRlm
-//        print(aSermon.isNowPlaying)
-//        print(aSermon.name)
-//        print(audSermonRlm.count)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
 
 

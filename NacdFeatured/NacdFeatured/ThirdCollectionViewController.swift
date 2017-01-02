@@ -396,7 +396,7 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
            // player3.playAudio("audioname", fileType: "mp3")
             
             // USE THE SINGLETON IMPLEMENTATION HERE!!
-            if player3.isCurrentlyPlaying == true
+            if player3.becomeCurrentlyPlaying == true
             {
                 print("don't play a new file")
             }
@@ -418,14 +418,6 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
     
     
     
-    /*
-     func addLoadingIndicator()
-     {
-     self.view.addSubview(activityIndicator)
-     activityIndicator.alpha = 0.75
-     activityIndicator.center = self.view.center
-     }
-     */
     
     func setupAudioSession()
     {

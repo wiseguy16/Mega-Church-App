@@ -12,7 +12,7 @@ import AVFoundation
 class AudioManager {
     
     var audioPlayer = AVPlayer()
-    var isCurrentlyPlaying = false
+    var becomeCurrentlyPlaying = false
     
     class var sharedInstance: AudioManager {
         struct Static {
@@ -29,12 +29,12 @@ class AudioManager {
         let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileName, ofType: fileType)!)
         audioPlayer = AVPlayer(URL: url)
         audioPlayer.play()
-        isCurrentlyPlaying = !isCurrentlyPlaying
+        becomeCurrentlyPlaying = true
         
         //audioPlayer.numberOfLoops = loop
     }
     
-    func stopAudio(){
+    func pauseAudio(){
         audioPlayer.pause()
     }
 }

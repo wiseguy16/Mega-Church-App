@@ -11,4 +11,5 @@ Written in Swift 2 Xcode 7.
 Dependencies used: Realm for CoreData and SDWebImage for Async Image Loading.
 
 
-![Maga-Church-App](https://github.com/wiseguy16/iOS-Portfolio/blob/master/FingerPaints.png) 
+![Maga-Church-App](https://github.com/wiseguy16/Mega-Church-App/blob/master/HomePageTab.png)
+

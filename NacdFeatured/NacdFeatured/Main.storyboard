@@ -39,7 +39,11 @@
             <string>FormaDJRText-Bold</string>
             <string>FormaDJRText-Bold</string>
         </mutableArray>
+        <mutableArray key="FormaDJRText-Italic.ttf">
+            <string>FormaDJRText-Italic</string>
+        </mutableArray>
         <mutableArray key="FormaDJRText-Regular.ttf">
+            <string>FormaDJRText-Regular</string>
             <string>FormaDJRText-Regular</string>
             <string>FormaDJRText-Regular</string>
             <string>FormaDJRText-Regular</string>
@@ -113,7 +117,7 @@
             <objects>
                 <collectionViewController id="qNo-Qz-r4X" customClass="FeaturedCollectionViewController" customModule="NacdFeatured" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="8S2-aq-itK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="749"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="789"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="30" id="5tP-XQ-95M">
@@ -123,7 +127,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="30"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="squiggles" id="ZUs-kA-TEz">
-                            <rect key="frame" x="0.0" y="-64" width="600" height="749"/>
+                            <rect key="frame" x="0.0" y="-64" width="600" height="789"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
@@ -134,7 +138,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" text="Featured Stuff" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-w1-Nrg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" text="Featured Stuff" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-w1-Nrg">
                                             <rect key="frame" x="20" y="170" width="240" height="20"/>
                                             <fontDescription key="fontDescription" name="FormaDJRText-Bold" family="Forma DJR Text" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -147,7 +151,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uk8-g7-uu1">
-                                            <rect key="frame" x="188" y="238" width="80" height="18"/>
+                                            <rect key="frame" x="188" y="238.5" width="80" height="18"/>
                                             <color key="backgroundColor" red="0.92156862750000001" green="0.91372549020000005" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frV-Ew-0Fv">
@@ -168,7 +172,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO5-GS-bec">
-                                            <rect key="frame" x="125" y="253" width="30" height="25"/>
+                                            <rect key="frame" x="125" y="195" width="30" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="7eY-al-WLg"/>
                                             </constraints>
@@ -185,10 +189,13 @@
                                             <state key="normal" image="btn-play.png"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBn-CB-fMn">
-                                            <rect key="frame" x="20" y="250" width="148" height="24"/>
-                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="12"/>
+                                            <rect key="frame" x="20" y="250" width="148" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="aEd-pc-ZB1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="13"/>
                                             <state key="normal" title="tabLabel">
-                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="findMoreTapped:" destination="qNo-Qz-r4X" eventType="touchUpInside" id="WBP-HI-eYt"/>
@@ -212,13 +219,11 @@
                                     <constraint firstItem="uk8-g7-uu1" firstAttribute="height" secondItem="frV-Ew-0Fv" secondAttribute="height" multiplier="0.6" id="I7n-5r-XNZ"/>
                                     <constraint firstItem="F3C-XF-a5g" firstAttribute="leading" secondItem="XVf-dx-kLB" secondAttribute="leading" id="Nff-Tt-abt"/>
                                     <constraint firstItem="i3p-NG-Xb3" firstAttribute="centerY" secondItem="F3C-XF-a5g" secondAttribute="centerY" id="VBI-QK-w5e"/>
-                                    <constraint firstAttribute="bottom" secondItem="frV-Ew-0Fv" secondAttribute="bottom" constant="24" id="Wu0-xs-pa4"/>
-                                    <constraint firstAttribute="bottom" secondItem="YO5-GS-bec" secondAttribute="bottom" constant="2" id="ZDv-dQ-Seo"/>
-                                    <constraint firstAttribute="bottom" secondItem="LBn-CB-fMn" secondAttribute="bottom" constant="6" id="chH-aD-kYL"/>
+                                    <constraint firstAttribute="bottom" secondItem="YO5-GS-bec" secondAttribute="bottom" constant="60" id="ZDv-dQ-Seo"/>
+                                    <constraint firstAttribute="bottom" secondItem="LBn-CB-fMn" secondAttribute="bottom" constant="10" id="chH-aD-kYL"/>
                                     <constraint firstItem="uk8-g7-uu1" firstAttribute="centerY" secondItem="frV-Ew-0Fv" secondAttribute="centerY" constant="6" id="dGp-sH-ZVi"/>
                                     <constraint firstItem="YO5-GS-bec" firstAttribute="centerX" secondItem="XVf-dx-kLB" secondAttribute="centerX" id="e2v-rm-LWE"/>
                                     <constraint firstItem="e2c-Eu-AOG" firstAttribute="centerY" secondItem="frV-Ew-0Fv" secondAttribute="centerY" id="eDN-BP-BLY"/>
-                                    <constraint firstItem="YO5-GS-bec" firstAttribute="top" secondItem="e2c-Eu-AOG" secondAttribute="bottom" constant="3" id="fFs-bE-qrS"/>
                                     <constraint firstItem="uk8-g7-uu1" firstAttribute="centerX" secondItem="frV-Ew-0Fv" secondAttribute="centerX" constant="12" id="gJa-3b-qf1"/>
                                     <constraint firstItem="frV-Ew-0Fv" firstAttribute="leading" secondItem="e2c-Eu-AOG" secondAttribute="trailing" constant="8" id="j7y-4U-RqL"/>
                                     <constraint firstItem="LBn-CB-fMn" firstAttribute="top" secondItem="e2c-Eu-AOG" secondAttribute="bottom" id="jfH-Mx-5Py"/>
@@ -235,36 +240,48 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="WelcomeCell" id="sO8-H8-Cg5" customClass="WelcomeCollectionViewCell" customModule="NacdFeatured" customModuleProvider="target">
-                                <rect key="frame" x="124.5" y="374" width="351" height="292"/>
+                                <rect key="frame" x="125" y="374" width="350" height="361"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="351" height="292"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="361"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hillWideshot.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="pVk-jb-dTT">
-                                            <rect key="frame" x="0.0" y="0.0" width="351" height="292"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="361"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="N_Icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="6ZM-FY-FLo">
-                                            <rect key="frame" x="0.0" y="25" width="351" height="80"/>
+                                            <rect key="frame" x="0.0" y="30" width="350" height="100"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="nzc-iY-1Y0"/>
+                                                <constraint firstAttribute="height" constant="100" id="nzc-iY-1Y0"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NORTHLAND CHURCH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmJ-dE-Hr8">
-                                            <rect key="frame" x="20" y="117" width="311" height="21"/>
-                                            <fontDescription key="fontDescription" name="FormaDJRText-Bold" family="Forma DJR Text" pointSize="17"/>
+                                            <rect key="frame" x="20" y="150" width="310" height="28"/>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Bold" family="Forma DJR Text" pointSize="23"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the latest Resources and Media here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-4y-9nt">
-                                            <rect key="frame" x="15" y="191" width="321" height="21"/>
-                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="17"/>
+                                            <rect key="frame" x="15" y="232" width="320" height="53"/>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="22"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH3-8d-Q64">
-                                            <rect key="frame" x="28" y="150" width="295" height="21"/>
-                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="17"/>
+                                            <rect key="frame" x="28" y="186" width="294" height="26.5"/>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="22"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroll Down For Featured Content" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V8-sA-sUm">
+                                            <rect key="frame" x="20" y="305" width="310" height="22"/>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Italic" family="Forma DJR Text" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⇩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aau-sO-mkI">
+                                            <rect key="frame" x="20" y="329.5" width="310" height="28"/>
+                                            <fontDescription key="fontDescription" name="FormaDJRText-Regular" family="Forma DJR Text" pointSize="23"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -274,23 +291,29 @@
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <constraints>
                                     <constraint firstItem="IH3-8d-Q64" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leadingMargin" constant="20" id="0ef-QM-tI5"/>
-                                    <constraint firstItem="IH3-8d-Q64" firstAttribute="top" secondItem="jmJ-dE-Hr8" secondAttribute="bottom" constant="12" id="1CL-L9-5k4"/>
+                                    <constraint firstItem="IH3-8d-Q64" firstAttribute="top" secondItem="jmJ-dE-Hr8" secondAttribute="bottom" constant="8" id="1CL-L9-5k4"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="IH3-8d-Q64" secondAttribute="trailing" constant="20" id="1bw-nI-VHZ"/>
+                                    <constraint firstItem="aau-sO-mkI" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" constant="20" id="4IC-aE-t24"/>
                                     <constraint firstAttribute="trailing" secondItem="jmJ-dE-Hr8" secondAttribute="trailing" constant="20" id="BWr-FB-fzd"/>
                                     <constraint firstAttribute="bottom" secondItem="pVk-jb-dTT" secondAttribute="bottom" id="Bbf-lO-fyL"/>
+                                    <constraint firstItem="5V8-sA-sUm" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" constant="20" id="EBS-Cz-MuW"/>
                                     <constraint firstItem="jmJ-dE-Hr8" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" constant="20" id="I1B-kJ-dHT"/>
                                     <constraint firstAttribute="trailing" secondItem="6ZM-FY-FLo" secondAttribute="trailing" id="IXp-XL-Zhf"/>
-                                    <constraint firstItem="6ZM-FY-FLo" firstAttribute="top" secondItem="sO8-H8-Cg5" secondAttribute="top" constant="25" id="PKy-wh-yCp"/>
+                                    <constraint firstItem="6ZM-FY-FLo" firstAttribute="top" secondItem="sO8-H8-Cg5" secondAttribute="top" constant="30" id="PKy-wh-yCp"/>
+                                    <constraint firstAttribute="trailing" secondItem="5V8-sA-sUm" secondAttribute="trailing" constant="20" id="XSQ-F5-ZO7"/>
                                     <constraint firstItem="LNd-4y-9nt" firstAttribute="top" secondItem="IH3-8d-Q64" secondAttribute="bottom" constant="20" id="ctU-1q-P08"/>
                                     <constraint firstAttribute="trailing" secondItem="LNd-4y-9nt" secondAttribute="trailing" constant="15" id="feX-fd-IST"/>
                                     <constraint firstItem="LNd-4y-9nt" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" constant="15" id="gZV-PV-qFw"/>
+                                    <constraint firstItem="5V8-sA-sUm" firstAttribute="top" secondItem="LNd-4y-9nt" secondAttribute="bottom" constant="20" id="iIO-8d-fWS"/>
                                     <constraint firstItem="pVk-jb-dTT" firstAttribute="top" secondItem="sO8-H8-Cg5" secondAttribute="top" id="iSn-pv-fWo"/>
-                                    <constraint firstItem="jmJ-dE-Hr8" firstAttribute="top" secondItem="6ZM-FY-FLo" secondAttribute="bottom" constant="12" id="j3A-S5-dc7"/>
+                                    <constraint firstItem="jmJ-dE-Hr8" firstAttribute="top" secondItem="6ZM-FY-FLo" secondAttribute="bottom" constant="20" id="j3A-S5-dc7"/>
                                     <constraint firstItem="6ZM-FY-FLo" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" id="jta-gT-TCC"/>
+                                    <constraint firstItem="aau-sO-mkI" firstAttribute="top" secondItem="5V8-sA-sUm" secondAttribute="bottom" constant="2" id="kg1-Ui-9AB"/>
                                     <constraint firstItem="pVk-jb-dTT" firstAttribute="leading" secondItem="sO8-H8-Cg5" secondAttribute="leading" id="m9n-zR-7Bh"/>
                                     <constraint firstAttribute="trailing" secondItem="pVk-jb-dTT" secondAttribute="trailing" id="nQk-WG-fO2"/>
+                                    <constraint firstAttribute="trailing" secondItem="aau-sO-mkI" secondAttribute="trailing" constant="20" id="xlj-5T-9Xj"/>
                                 </constraints>
-                                <size key="customSize" width="351" height="292"/>
+                                <size key="customSize" width="350" height="361"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -307,7 +330,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="749"/>
+                    <size key="freeformSize" width="600" height="789"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWD-0r-LRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

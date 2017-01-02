@@ -60,18 +60,6 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
          todayCheck = NSDate()
         
         makeDateLabel()
-
-        //TODO: Fix Live Service Label. one more try again
-       // let featuredRealm = Realm.sharedInstance
-        
-      //  makeUnavailableLabel(unavailableSquare, unavailableBar2: unavailableSquare2)
-      //  makeLoadActivityIndicator()
-        
-//        let memoryCapacity = 500 * 1024 * 1024
-//        let diskCapacity = 500 * 1024 * 1024
-//        let urlCache = NSURLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "myDiskPath")
-//        NSURLCache.setSharedURLCache(urlCache)
-
         
         self.collectionView!.alwaysBounceVertical = true
         //refresher.tintColor = UIColor.grayColor()
@@ -206,14 +194,6 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
     {
         //code to execute during refresher
         
-       // let ftrRlm = featuredRealm.objects(FeaturedRlm.self)
-        
-//        try! featuredRealm.write({
-//            featuredRlmItems.enumerate().forEach { index, item in
-//                let order = abs(index - 1000)
-//                item.sortOrder = order
-//            }
-//        })
         var tempSorter = 1000
         try! featuredRealm.write({
             for aRlmOnDisk in featuredRlmItems
@@ -465,7 +445,8 @@ class FeaturedCollectionViewController: UICollectionViewController, FeaturedAPIC
         {
             // First section
             width = collectionView.frame.width
-            height = 320
+            height = collectionView.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! * 2)
+            
             return CGSizeMake(width, height)
         }
         else

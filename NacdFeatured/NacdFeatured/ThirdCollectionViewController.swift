@@ -17,12 +17,16 @@ import RealmSwift
 
 
 
+
 private let reuseIdentifier = "ThirdCollectionViewCell"
 
 class ThirdCollectionViewController: UICollectionViewController, APIControllerProtocol, MenuTransitionManagerDelegate
 {
     let defaultsAudio = NSUserDefaults.standardUserDefaults()
     var todayCheck: NSDate?
+    
+    var delegate: GetCurrentTimeDelegate?
+
 
     
     var myDateFormatter = NSDateFormatter()
@@ -35,7 +39,8 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
     let daysInWeek = 7
     var thisWeek: Int = 0
     
-
+    let player3 = AudioManager.sharedInstance
+    
 
     
     var audioPlayer: AVAudioPlayer!
@@ -70,7 +75,7 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
     var perPage = 15
     var theseVideosString = "/users/northlandchurch/albums/3446210/videos?per_page=15"
     
-    var player: AVPlayer?
+    var currentPlayer: AVPlayer?
     var player2 = AVPlayer()
     var playerItem2: AVPlayerItem?
     
@@ -84,8 +89,10 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        
         todayCheck = NSDate()
-
+        
         myDateFormatter.dateFormat = "yyyy-MM-dd"
         
          makeUnavailableLabel(unavailableSquare, unavailableBar2: unavailableSquare2)
@@ -117,6 +124,13 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         smallLoader.stopAnimating()
+        if player3.audioPlayer != nil
+        {
+            currentPlayer = player3.audioPlayer
+        }
+
+        
+
         
         let audSermonRlm = audioRealm.objects(SermonAudioRlm.self).filter("isNowPlaying == true")
         nowPlayingRlmItems = audSermonRlm
@@ -385,21 +399,33 @@ class ThirdCollectionViewController: UICollectionViewController, APIControllerPr
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("NowPlayingViewController") as! NowPlayingViewController
         navigationController?.pushViewController(detailVC, animated: true)
        // aSermon.isNowPlaying = true
+        self.delegate = detailVC
+       
         if let playingSermon = nowPlayingRlmItems.last
         {
            if let aSermon = Video.makeAudioFromRlmObjct(playingSermon)
            {
              detailVC.aSermon = aSermon
+           // var tempTime = detailVC.theTime
+//            print(tempTime)
+//            detailVC.newTime = tempTime
+            if currentPlayer != nil
+            {
+               // print("3rd CollView: \(CMTimeMakeWithSeconds(CMTimeGetSeconds(currentPlayer!.currentItem!.currentTime()), 1))")
+                let nowTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentPlayer!.currentItem!.currentTime()), 1)
+                delegate!.getCurrentAudioTime(nowTime)
+            }
+
              detailVC.skipSetup = true
             
-            let player3 = AudioManager.sharedInstance
+           // let player3 = AudioManager.sharedInstance
            // player3.playAudio("audioname", fileType: "mp3")
             
             // USE THE SINGLETON IMPLEMENTATION HERE!!
-            if player3.becomeCurrentlyPlaying == true
-            {
-                print("don't play a new file")
-            }
+//            if player3.becomeCurrentlyPlaying == true
+//            {
+//                print("don't play a new file")
+//            }
         
             
            }

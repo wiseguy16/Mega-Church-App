@@ -15,17 +15,21 @@ import RealmSwift
 import SDWebImage
 
 
-//extension AVPlayer {
-//    static let sharedAudioPlayer = AVPlayer()
-//}
+protocol GetCurrentTimeDelegate
+{
+    func getCurrentAudioTime(playingNow: CMTime)
+}
 
 var player: AVPlayer!
 
 
-class NowPlayingViewController: UIViewController
+class NowPlayingViewController: UIViewController, GetCurrentTimeDelegate
 {
     
     var aSermon: Video!
+    var dlg3rdCollVC = ThirdCollectionViewController()
+    
+    
     
     
     let audioRealm = Realm.sharedInstance
@@ -35,7 +39,7 @@ class NowPlayingViewController: UIViewController
     var notificationToken: NotificationToken? = nil
     var checkArrayAudioRlm = [Int]()
 
-    static let sharedAudioPlayer = AVPlayer()
+   // static let sharedAudioPlayer = AVPlayer()
     
     @IBOutlet weak var nowPlayingImageView: UIImageView!
     
@@ -54,6 +58,9 @@ class NowPlayingViewController: UIViewController
     
     @IBOutlet weak var downloadProgressView: UIProgressView!
     
+    let player2 = AudioManager.sharedInstance
+    
+    //        player2.playAudio("audioname", fileType: "mp3")
     
 //    var player2 = AVPlayer.sharedAudioPlayer
    // let player2 = AVPlayer.sharedAudioPlayer
@@ -67,14 +74,20 @@ class NowPlayingViewController: UIViewController
     var playingTimer = NSTimer()
     var timer2 = NSTimer()
     var slowValue: Float = 0.0
-    var theTime: CMTime?
+    var theTime: CMTime!
+    var newTime: CMTime?
     var nowPlayItem: AVPlayerItem?
+    let fileType = "mp3"
 
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        theTime = CMTime(seconds: 0, preferredTimescale: 1)
+        dlg3rdCollVC.delegate = self
+
+
+       // GetCurrentTime.delegate = self
+       //newTime = CMTime(seconds: 45, preferredTimescale: 1)
         
         let config = Realm.Configuration()
         Realm.Configuration.defaultConfiguration = config
@@ -108,24 +121,21 @@ class NowPlayingViewController: UIViewController
             print("Better Handle this Error!")
         }
         
-//        let player2 = AudioManager.sharedInstance
-//        player2.playAudio("audioname", fileType: "mp3")
+
         
         let song = AVPlayerItem(URL: NSURL(string: "https://s3.amazonaws.com/nacdvideo/\(aSermon.tagForAudioRef!).mp3")! )
         //player = AVQueuePlayer(items: songs)
         
+        
+        player2.audioPlayer = AVPlayer(playerItem: song)
 
-        player = AVPlayer(playerItem: song)
+       // player = AVPlayer(playerItem: song)
+       // player.addObserver(self, forKeyPath: "currentTime", options: .New , context: nil)
         
 
         
-        
-        
-        let theSession = AVAudioSession.sharedInstance()
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector:#selector(NowPlayingViewController.playInterrupt(_:)),
-                                                         name:AVAudioSessionInterruptionNotification,
-                                                         object: theSession)
+//        let theSession = AVAudioSession.sharedInstance()
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(NowPlayingViewController.playInterrupt(_:)), name:AVAudioSessionInterruptionNotification, object: theSession)
         
 
         // Do any additional setup after loading the view.
@@ -135,14 +145,25 @@ class NowPlayingViewController: UIViewController
     {
       //  print(skipSetup)
         super.viewWillAppear(animated)
-//        if skipSetup != true
-//        {
+        if skipSetup != true
+        {
         prepForPlaying()
-//        }
-//        if skipSetup == true
-//        {
-//            player.seekToTime(theTime!)
-//        }
+        }
+        if skipSetup == true
+        {
+            cancelTimer()
+           // player2.audioPlayer?.pause()
+            convertAudioAndUpdateToSharedRealmObjcts(aSermon)
+            
+            startTimer()
+            //newTime = player2.audioPlayer?.currentItem?.currentTime()
+
+           // player2.audioPlayer!.play()
+            player2.audioPlayer!.seekToTime(newTime!)
+            //aSermon.isNowPlaying = !aSermon.isNowPlaying
+            playPauseButton.setImage(pauseImage, forState: .Normal)
+            
+        }
         dwnldSermonRlm = audioRealm.objects(SermonAudioRlm.self).filter("isNowPlaying == true")
         
         for aPod in dwnldSermonRlm
@@ -150,8 +171,6 @@ class NowPlayingViewController: UIViewController
             checkArrayAudioRlm.append(aPod.id)
             print(aPod.id)
         }
-   
-        
     }
     
   
@@ -161,32 +180,40 @@ class NowPlayingViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-    func playInterrupt(notification: NSNotification) {
-        
-        if notification.name == AVAudioSessionInterruptionNotification
-            && notification.userInfo != nil {
-            
-            var info = notification.userInfo!
-            var intValue: UInt = 0
-            (info[AVAudioSessionInterruptionTypeKey] as! NSValue).getValue(&intValue)
-            if let type = AVAudioSessionInterruptionType(rawValue: intValue) {
-                switch type {
-                case .Began:
-                    print("aaaaarrrrgggg you stole me")
-                    player.pause()
-                    
-                case .Ended:
-                    let timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(NowPlayingViewController.resumeNow(_:)), userInfo: nil, repeats: false)
-                }
-            }
-        }
+    func getCurrentAudioTime(playingNow: CMTime)
+    {
+        newTime = playingNow
+       print("Getting info?")
     }
     
-    func resumeNow(timer : NSTimer)
-    {
-        player.play()
-        print("attempted restart")
-    }
+    
+    
+//    func playInterrupt(notification: NSNotification) {
+//        
+//        if notification.name == AVAudioSessionInterruptionNotification
+//            && notification.userInfo != nil {
+//            
+//            var info = notification.userInfo!
+//            var intValue: UInt = 0
+//            (info[AVAudioSessionInterruptionTypeKey] as! NSValue).getValue(&intValue)
+//            if let type = AVAudioSessionInterruptionType(rawValue: intValue) {
+//                switch type {
+//                case .Began:
+//                    print("aaaaarrrrgggg you stole me")
+//                    player.pause()
+//                    
+//                case .Ended:
+//                    let timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(NowPlayingViewController.resumeNow(_:)), userInfo: nil, repeats: false)
+//                }
+//            }
+//        }
+//    }
+//    
+//    func resumeNow(timer : NSTimer)
+//    {
+//        player.play()
+//        print("attempted restart")
+//    }
     
     
     @IBAction func downloadCloudTapped(sender: UIButton)
@@ -311,13 +338,13 @@ class NowPlayingViewController: UIViewController
         {
            // player2.play()
             
-            player.play()
+            player2.audioPlayer!.play()
             sender.setImage(pauseImage, forState: .Normal)
         }
         else if !aSermon.isNowPlaying
         {
            // player2.pause()
-            player.pause()
+            player2.audioPlayer!.pause()
             sender.setImage(playImage, forState: .Normal)
         }
         
@@ -327,9 +354,9 @@ class NowPlayingViewController: UIViewController
     
     @IBAction func scrubAudio(sender: UISlider)
     {
-        let seekTime = CMTimeMakeWithSeconds(Double(sender.value) * CMTimeGetSeconds(player.currentItem!.asset.duration), 1)
-        player.seekToTime(seekTime)
-       
+        let seekTime = CMTimeMakeWithSeconds(Double(sender.value) * CMTimeGetSeconds(player2.audioPlayer!.currentItem!.asset.duration), 1)
+        player2.audioPlayer!.seekToTime(seekTime)
+      // player2.audioPlayer.seekToTime(seekTime) //TODO: This seems to work also!!!!!****************
         
     }
     
@@ -339,7 +366,7 @@ class NowPlayingViewController: UIViewController
         playingTimer.invalidate() // just in case this button is tapped multiple times
         
         // start the timer
-        playingTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        playingTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
        
     }
     
@@ -350,41 +377,67 @@ class NowPlayingViewController: UIViewController
     
     func timerAction()
     {
-        if skipSetup != true
-        {
-            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
-            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
-            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
-            
+//        if skipSetup != true
+//        {
+//            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
+//            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
+//            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
+        
+        endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player2.audioPlayer!.currentItem!.asset.duration) - CMTimeGetSeconds(player2.audioPlayer!.currentTime()), 1).drrationText
+        startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player2.audioPlayer!.currentItem!.currentTime()), 1).drrationText
+        let rate = Float(CMTimeGetSeconds(player2.audioPlayer!.currentTime())/CMTimeGetSeconds(player2.audioPlayer!.currentItem!.asset.duration))
+        
             playSlider.setValue(rate, animated: false)
-            theTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1)
-            print(theTime)
+        //playSlider.addObserver(self, forKeyPath: "value", options: .New , context: nil)
+        //theTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1)
+       // theTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player2.audioPlayer!.currentItem!.currentTime()), 1)
+
+        
+           // print(theTime)
             
             // Call delegate
-            if (CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()) < 1.0)
-            {
-                cancelTimer()
-                
-                player.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
-                startTimer()
-                
-                player.pause()
-                playPauseButton.setImage(playImage, forState: .Normal)
-                print("playerDidFinishPlaying")
-                aSermon.isNowPlaying = !aSermon.isNowPlaying
-               // self.delegate.playerDidFinishPlaying(self)
-            }
-        }
-        else
+//            if (CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()) < 1.0)
+//            {
+//                cancelTimer()
+//                
+//                player.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
+//                startTimer()
+//                
+//                player.pause()
+//                playPauseButton.setImage(playImage, forState: .Normal)
+//                print("playerDidFinishPlaying")
+//                aSermon.isNowPlaying = !aSermon.isNowPlaying
+//               // self.delegate.playerDidFinishPlaying(self)
+//            }
+        
+        if (CMTimeGetSeconds(player2.audioPlayer!.currentItem!.asset.duration) - CMTimeGetSeconds(player2.audioPlayer!.currentTime()) < 1.0)
         {
-            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
-            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
-            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
+            cancelTimer()
             
-            playSlider.setValue(rate, animated: false)
-            player.seekToTime(theTime!)
+            player2.audioPlayer!.seekToTime(CMTime(seconds: 0, preferredTimescale: 1))
+            startTimer()
             
+            player2.audioPlayer!.pause()
+            playPauseButton.setImage(playImage, forState: .Normal)
+            print("playerDidFinishPlaying")
+            aSermon.isNowPlaying = !aSermon.isNowPlaying
+            // self.delegate.playerDidFinishPlaying(self)
         }
+
+        
+        
+        
+        //}
+//        else
+//        {
+//            endLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.asset.duration) - CMTimeGetSeconds(player.currentTime()), 1).drrationText
+//            startLabel.text = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1).drrationText
+//            let rate = Float(CMTimeGetSeconds(player.currentTime())/CMTimeGetSeconds(player.currentItem!.asset.duration))
+//            
+//            playSlider.setValue(rate, animated: false)
+//            //player.seekToTime(theTime!)
+//            
+//        
         
 //        if self.delegate != nil {
 //            self.delegate.playerDidUpdateCurrentTimePlaying(self, currentTime: (self.audioPlayer.currentItem?.currentTime())!)
@@ -448,15 +501,17 @@ class NowPlayingViewController: UIViewController
     
     @IBAction func rewindTapped(sender: UIButton)
     {
-        let subtractTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1) - CMTime(seconds: 30, preferredTimescale: 1)
-        player.seekToTime(subtractTime)
+        let subtractTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player2.audioPlayer!.currentItem!.currentTime()), 1) - CMTime(seconds: 30, preferredTimescale: 1)
+        player2.audioPlayer!.seekToTime(subtractTime)
+       // player2.audioPlayer.seekToTime(subtractTime)
         
     }
     
     @IBAction func forwardTapped(sender: UIButton)
     {
-        let addTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player.currentItem!.currentTime()), 1) + CMTime(seconds: 30, preferredTimescale: 1)
-        player.seekToTime(addTime)
+        let addTime = CMTimeMakeWithSeconds(CMTimeGetSeconds(player2.audioPlayer!.currentItem!.currentTime()), 1) + CMTime(seconds: 30, preferredTimescale: 1)
+        player2.audioPlayer!.seekToTime(addTime)
+      //  player2.audioPlayer.seekToTime(addTime)
     }
     
     
@@ -489,29 +544,42 @@ class NowPlayingViewController: UIViewController
             let destinationUrl = documentsDirectoryURL.URLByAppendingPathComponent(audioUrl.lastPathComponent ?? "audio.mp3")
             print("This is the destURL-->> \(destinationUrl)")
             
-            // to check if it exists before downloading it
-            if NSFileManager().fileExistsAtPath(destinationUrl.path!) {
+            // to check if it exists before PLAYING it
+            if NSFileManager().fileExistsAtPath(destinationUrl.path!)
+            {
                 print("The file already exists at path")
                 let audioFilePath =  destinationUrl.path!
                 let audioFileUrl = NSURL.fileURLWithPath(audioFilePath) //   .fileURL(withPath: audioFilePath!)
                 let myAsset = AVAsset(URL: audioFileUrl)
                 let playerItem1 = AVPlayerItem(asset: myAsset)
                 
-                player.replaceCurrentItemWithPlayerItem(playerItem1)
+              //  player.replaceCurrentItemWithPlayerItem(playerItem1)
+                player2.audioPlayer!.replaceCurrentItemWithPlayerItem(playerItem1)
+            }
+            else
+            {
+                let myAsset = AVAsset(URL: audioUrl)
+                let streamItem1 = AVPlayerItem(asset: myAsset)
+               // player.replaceCurrentItemWithPlayerItem(streamItem1)
+                player2.audioPlayer!.replaceCurrentItemWithPlayerItem(streamItem1)
             }
             
-           player.rate = 1.0
+          // player.rate = 1.0
+            player2.audioPlayer!.rate = 1.0
             
             if aSermon.isNowPlaying
             {
-                player.play()
-                startTimer()
-                playPauseButton.setImage(pauseImage, forState: .Normal)
+                   // player.play()
+               
+                    player2.audioPlayer!.play()
+                    startTimer()
+                    playPauseButton.setImage(pauseImage, forState: .Normal)
 
             }
             else if !aSermon.isNowPlaying
             {
-                player.pause()
+               // player.pause()
+                player2.audioPlayer!.pause()
                 playPauseButton.setImage(playImage, forState: .Normal)
             }
         }
@@ -563,6 +631,14 @@ class NowPlayingViewController: UIViewController
         }
         convertAudioAndUpdateToSharedRealmObjcts(aSermon)
     }
+    
+//    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>)
+//    {
+//        if keyPath == "value"
+//        {
+//            print("current value is: \(playSlider.value)")
+//        }
+//    }
 
    
 }

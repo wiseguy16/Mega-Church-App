@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NacdFeatured/NowPlayingViewController.swift"
-            timestampString = "505068968.381207"
+            timestampString = "505094038.855069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
             landmarkName = "prepForPlaying()"
             landmarkType = "5">
          </BreakpointContent>

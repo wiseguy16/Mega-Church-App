@@ -11,7 +11,7 @@ import AVFoundation
 
 class AudioManager {
     
-    var audioPlayer = AVPlayer()
+    var audioPlayer: AVPlayer?
     var becomeCurrentlyPlaying = false
     
     class var sharedInstance: AudioManager {
@@ -25,16 +25,16 @@ class AudioManager {
         return Static.instance!
     }
     
-    func playAudio(fileName: String, fileType: String){
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileName, ofType: fileType)!)
-        audioPlayer = AVPlayer(URL: url)
-        audioPlayer.play()
-        becomeCurrentlyPlaying = true
-        
-        //audioPlayer.numberOfLoops = loop
-    }
-    
-    func pauseAudio(){
-        audioPlayer.pause()
-    }
+//    func playAudio(fileName: String, fileType: String){
+//        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileName, ofType: fileType)!)
+//        audioPlayer = AVPlayer(URL: url)
+//        audioPlayer.play()
+//        becomeCurrentlyPlaying = true
+//        
+//        //audioPlayer.numberOfLoops = loop
+//    }
+//    
+//    func pauseAudio(){
+//        audioPlayer.pause()
+//    }
 }
